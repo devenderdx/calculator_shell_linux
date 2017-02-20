@@ -10,33 +10,33 @@ result=`mktemp -t result.XXXXXX`
 function add11 {
 numb1=`cat $first`
 numb2=`cat $second`
-ans=$(expr $numb1 + $numb2)
+ans=$(echo "scale=5; $numb1 + $numb2" | bc -q)
 echo "Result After Addition Of $numb1 and $numb2 is : $ans " > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500 
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300 
 }
 
 function sub12 {
 numb1=`cat $first`
 numb2=`cat $second`
-ans=$(expr $numb1 - $numb2)
+ans=$(echo "scale=5; $numb1 - $numb2" | bc -q)
 echo "Result After Subtraction Of $numb1 and $numb2 is : $ans " > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300
 }
 
 function mul13 {
 numb1=`cat $first`
 numb2=`cat $second`
-ans=$(expr $numb1 \* $numb2)
+ans=$(echo "scale=5; $numb1 * $numb2" | bc -q)
 echo "Result After Multiplication Of $numb1 and $numb2 is : $ans " > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300
 }
 
 function div14 {
 numb1=`cat $first`
 numb2=`cat $second`
-ans=$(expr $numb1 / $numb2)
+ans=$(echo "scale=5; $numb1 / $numb2" | bc -q)
 echo "Result After Division Of $numb1 and $numb2 is : $ans " > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300
 }
 
 function factor15 {
@@ -44,7 +44,7 @@ numb1=`cat $first`
 numb2=`cat $second`
 ans=$(factor $numb1 $numb2)
 echo -e "Factor of $numb1 and $numb2 are :\n $ans " > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300
 }
 
 function exponent16 {
@@ -53,7 +53,7 @@ numb2=`cat $second`
 ans1=$(echo "scale=5; e ($numb1)" | bc -lq)
 ans2=$(echo "scale=5; e ($numb2)" | bc -lq)
 echo -e "Exponent Of $numb1 is : $ans1 \nExponent Of $numb2 is : $ans2" > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300
 }
 
 function sqrt17 {
@@ -62,7 +62,7 @@ numb2=`cat $second`
 ans1=$(echo "scale=5; sqrt ($numb1)" | bc -lq)
 ans2=$(echo "scale=5; sqrt ($numb2)" | bc -lq)
 echo -e "Square Root Of $numb1 is : $ans1 \nSquare Root Of $numb2 is : $ans2" > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300
 }
 
 function sin18 {
@@ -71,7 +71,7 @@ numb2=`cat $second`
 ans1=$(echo "scale=5; s ($numb1)" | bc -lq)
 ans2=$(echo "scale=5; s ($numb2)" | bc -lq)
 echo -e "Sin Of $numb1 is : $ans1 \nSin Of $numb2 is : $ans2\nNOTE :- The result is in Radian" > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300
 }
 
 function cos19 {
@@ -80,7 +80,7 @@ numb2=`cat $second`
 ans1=$(echo "scale=5; c ($numb1)" | bc -lq)
 ans2=$(echo "scale=5; c ($numb2)" | bc -lq)
 echo -e "Cosine Of $numb1 is : $ans1 \nCosine Of $numb2 is : $ans2\nNOTE :- The result is in Radian" > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300
 }
 
 function log20 {
@@ -89,7 +89,7 @@ numb2=`cat $second`
 ans1=$(echo "scale=5; l ($numb1)" | bc -lq)
 ans2=$(echo "scale=5; l ($numb2)" | bc -lq)
 echo -e "Natural Logarithm Of $numb1 is : $ans1 \nNatural Logarithm Of $numb2 is : $ans2" > $result
-zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 500 --height 500
+zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --width 300 --height 300
 }
 
 
@@ -100,14 +100,14 @@ zenity --text-info --title "BASIC CALCULATOR : Result" --filename=$result --widt
 while [ 1 ]
 do
 
-zenity --title "BASIC CALCULATOR" --text "Enter the first number :- " --entry --width 350 --height 350 > $first && zenity --title "BASIC CALCULATOR" --text "Enter the second number :- " --entry --width 350 --height 350 > $second
+zenity --title "BASIC CALCULATOR" --text "Enter the first number :- " --entry --width 250 --height 250 > $first && zenity --title "BASIC CALCULATOR" --text "Enter the second number :- " --entry --width 250 --height 250 > $second
 
 if [ $? -eq 1 ]
 then
 break
 fi
 
-zenity --title "BASIC CALCULATOR" --text "Select the operation from the list below." --list --radiolist --column "Select" --column "Operations" False "ADDITION" FALSE "SUBTRACTION" FALSE "MULTIPLY" FALSE "DIVISION" FALSE "FACTOR" FALSE "EXPONENT" FALSE "SQUARE_ROOT" FALSE "SINE" FALSE "COSINE" FALSE "LOGARITHM" FALSE "EXIT" --width 350 --height 350 > $temp1
+zenity --title "BASIC CALCULATOR" --text "Select the operation from the list below." --list --radiolist --column "Select" --column "Operations" False "ADDITION" FALSE "SUBTRACTION" FALSE "MULTIPLY" FALSE "DIVISION" FALSE "FACTOR" FALSE "EXPONENT" FALSE "SQUARE_ROOT" FALSE "SINE" FALSE "COSINE" FALSE "LOGARITHM" FALSE "EXIT" --width 380 --height 500 > $temp1
 
 if [ $? -eq 1 ]
 then
