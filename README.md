@@ -11,6 +11,8 @@ this calculator performs different operations whic are shown below :-
 8. sine (trignometry function)
 9. cosine (trignometry function)
 10. logarithm (natural)
+
+before running this code please make sure that your shell is bash and you have zenity commandif you dont then install it by typing :- sudo apt-get install zenity
 please run the code file in bash shell by giving it permission for execution using chmod command..........
 for any query please contact me at devkumardx1995@gmail.com.................
 thank you..
